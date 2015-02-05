@@ -1,1 +1,22 @@
 _author_ = 'Drew'
+# Read in the data from a file
+f = open('Step1Data.txt','r')
+# Creates an empty dictionary object to add to later
+reference = dict()
+# Parses the information in separate pieces to be added together as data
+for line in f:
+    pieces = line.split(':')
+    if pieces.__len__() < 2:
+        count = 0
+    elif count == 0:
+         key = pieces[1]
+    elif count == 1:
+        author = pieces[1]
+    elif count == 2:
+        title = pieces[1]
+    elif count == 3:
+        publisher = pieces[1]
+    elif count == 4:
+        date = pieces[1]
+    reference = reference + dict[(key,(author + ', ' + title + ', ' + publisher + ', ' + date))]
+    count += 1
